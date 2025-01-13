@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rancher
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://releases.rancher.com/server-charts/stable
+    targetRevision: "2.10.1"  # Specify the version of the Helm chart
+    chart: rancher
+    helm:
+      values: |
+        hostname: rancher.skynetinc.tech
+        bootstrapPassword: admin
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cattle-system  # Default namespace for Rancher
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
