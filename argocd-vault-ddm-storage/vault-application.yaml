@@ -1,0 +1,51 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vault
+  namespace: argocd
+spec:
+  destination:
+    namespace: hashicorp
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+    - repoURL: https://github.com/WorldDrknss/argocd-vault-ddm-storage.git
+      path: vault-app
+      targetRevision: HEAD
+    - repoURL: https://helm.releases.hashicorp.com
+      chart: vault
+      targetRevision: 0.29.1
+      helm:
+        values: |
+          server:
+            serviceAccount:
+              create: false
+              name: "vault-sa"
+
+            auditStorage:
+              enabled: true
+
+            ha:
+              enabled: true
+              replicas: 3
+              config: |
+                ui = true
+
+                listener "tcp" {
+                  address = "0.0.0.0:8200"
+                  cluster_address = "0.0.0.0:8201"
+                  tls_disable = "true"
+                }
+
+                # DynamoDB storage backend configuration
+                storage "dynamodb" {
+                  ha_enabled = "true"
+                  table = "<TABLENAME>"  # Replace
+                  region = "<REGION>"       # Replace
+                }
+
+                # Seal using AWS KMS
+                seal "awskms" {
+                  region = "<REGION>" # Replace
+                  kms_key_id = "<KEYID>" # Replace
+                }
