@@ -9,8 +9,8 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-    - repoURL: https://github.com/WorldDrknss/argocd-vault-ddm-storage.git
-      path: vault-app
+    - repoURL: https://github.com/WorldDrknss/ArgoCD-Public.git
+      path: argocd-vault-ddm-storage
       targetRevision: HEAD
     - repoURL: https://helm.releases.hashicorp.com
       chart: vault
