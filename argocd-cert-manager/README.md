@@ -38,14 +38,11 @@ spec:
       targetRevision: v1.16.2
       helm:
         valueFiles:
-          - $values/values.yaml
-    - repoURL: https://github.com/WorldDrknss/argocd-cert-manager.git
-      path: "."
-      targetRevision: main
+          - $values/argocd-cert-manager/values.yaml
+    - repoURL: https://github.com/WorldDrknss/ArgoCD-Public.git
+      path: "argocd-cert-manager/manifests"
       ref: values
-      directory:
-        recurse: true
-        exclude: '{values.yaml,LISCENSE,README.md}'
+      targetRevision: main
   destination:
     server: https://kubernetes.default.svc
     namespace: cert-manager
