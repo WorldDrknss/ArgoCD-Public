@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vault
+  namespace: argocd
+spec:
+  project: default
+  sources: 
+    - repoURL: https://helm.releases.hashicorp.com
+      chart: vault
+      targetRevision: 0.29.1
+      helm:
+        valueFiles:
+        - $values/values.yaml
+    - repoURL: https://github.com/WorldDrknss/argocd-vault-raft-storage.git
+      path: "argocd-vault-raft-storage/manifests"
+      targetRevision: main
+      ref: values
+  destination:
+    namespace: hashicorp
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
