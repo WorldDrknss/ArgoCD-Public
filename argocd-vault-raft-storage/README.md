@@ -40,12 +40,9 @@ spec:
         valueFiles:
         - $values/values.yaml
     - repoURL: https://github.com/WorldDrknss/argocd-vault-raft-storage.git
-      path: "."
+      path: "argocd-vault-raft-storage/manifests"
       targetRevision: main
       ref: values
-      directory:
-        recurse: true
-        exclude: '{values.yaml,LISCENSE,README.md}'
   destination:
     namespace: hashicorp
     server: https://kubernetes.default.svc
