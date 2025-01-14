@@ -11,9 +11,9 @@ spec:
       targetRevision: v1.16.2
       helm:
         valueFiles:
-          - $values/extras/values.yaml
+          - $values/argocd-cert-manager/values.yaml
     - repoURL: https://github.com/WorldDrknss/ArgoCD-Public.git
-      path: "argocd-cert-manager"
+      path: "argocd-cert-manager/manifests"
       ref: values
       targetRevision: main
   destination:
