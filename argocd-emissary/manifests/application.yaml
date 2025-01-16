@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: emissary
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://app.getambassador.io
+      chart: emissary-ingress
+      targetRevision: 8.9.1
+    - repoURL: https://github.com/WorldDrknss/ArgoCD-Public.git
+      path: "argocd-emissary/manifests"
+      targetRevision: "main"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: emissary
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

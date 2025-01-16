@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: linkerd-jaeger
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - chart: linkerd-jaeger
+      repoURL: https://helm.linkerd.io/edge
+      targetRevision: 2024.11.8
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: linkerd-jaeger
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

@@ -8,8 +8,8 @@ Each application in this repository is defined by an ArgoCD `Application` manife
 
 ## Usage
 
-- Clone this repository and apply the `applicatoin.yaml` files to your ArgoCD instance using `kubectl`:
+- Clone this repository and apply the `application.yaml` files to your ArgoCD instance using `kubectl`:
   
   ```bash
   kubectl apply -f apps/app1/application.yaml
-
+  ```
