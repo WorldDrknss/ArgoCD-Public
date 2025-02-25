@@ -1,11 +1,10 @@
----
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: linkerd-control-plane
   namespace: argocd
   annotations:
-    avp.kubernetes.io/path: kv-v2/data/linkerd
+    avp.kubernetes.io/path: kv-v2/data/linkerd  # Specifies the Vault path for AVP
 spec:
   project: default
   sources:
@@ -15,11 +14,11 @@ spec:
       helm:
         parameters:
           - name: identityTrustAnchorsPEM
-            value: <trust-anchor>
+            value: "<path:kv-v2/data/linkerd#trust-anchor>"
           - name: identity.issuer.tls.crtPEM
-            value: <issuer-cert>
+            value: "<path:kv-v2/data/linkerd#issuer-cert>"
           - name: identity.issuer.tls.keyPEM
-            value: <issuer-key>
+            value: "<path:kv-v2/data/linkerd#issuer-key>"
   destination:
     server: https://kubernetes.default.svc
     namespace: linkerd
