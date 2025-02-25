@@ -4,7 +4,7 @@ metadata:
   name: linkerd-control-plane
   namespace: argocd
   annotations:
-    avp.kubernetes.io/path: kv-v2/data/argocd
+    avp.kubernetes.io/path: kv-v2/data/linkerd
 spec:
   project: default
   sources:
