@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: linkerd-control-plane
   namespace: argocd
+  annotations:
+    avp.kubernetes.io/path: kv-v2/data/argocd
 spec:
   project: default
   sources:
@@ -13,38 +15,13 @@ spec:
         parameters:
           - name: identityTrustAnchorsPEM
             value: |-
-              -----BEGIN CERTIFICATE-----
-              MIIBjjCCATOgAwIBAgIQW2DRh2Dw8hs10NbDWIS9pTAKBggqhkjOPQQDAjAlMSMw
-              IQYDVQQDExpyb290LmxpbmtlcmQuY2x1c3Rlci5sb2NhbDAeFw0yNDEyMTIyMDEy
-              MTVaFw0zNDEyMTAyMDEyMTVaMCUxIzAhBgNVBAMTGnJvb3QubGlua2VyZC5jbHVz
-              dGVyLmxvY2FsMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEja381R1cDvxk0FXv
-              CkbLOeA4vdA7NHZnQrqwICrSxmYHoHpSBbXs6fqsV3yFQNzvC4aVN9ECPCOJlP7G
-              t+neS6NFMEMwDgYDVR0PAQH/BAQDAgEGMBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYD
-              VR0OBBYEFFA/OOU6bbsuNEMgDMNjZugUBwlUMAoGCCqGSM49BAMCA0kAMEYCIQDN
-              9ZEFYlTJXBLioz9ZHxQQeyVbmTZIQ02nOZc6nup+/AIhAKyWNnBwZso5Cl1TsvL8
-              vT9nUcADcxkgoV9rNX21PGbd
-              -----END CERTIFICATE-----
+             <trust-anchor>
           - name: identity.issuer.tls.crtPEM
             value: |-
-              -----BEGIN CERTIFICATE-----
-              MIIBsjCCAVigAwIBAgIQfHw1Y+GZXq3v23OVB8BbUzAKBggqhkjOPQQDAjAlMSMw
-              IQYDVQQDExpyb290LmxpbmtlcmQuY2x1c3Rlci5sb2NhbDAeFw0yNDEyMTIyMDEy
-              MzNaFw0yNTEyMTIyMDEyMzNaMCkxJzAlBgNVBAMTHmlkZW50aXR5LmxpbmtlcmQu
-              Y2x1c3Rlci5sb2NhbDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABG5D4J8727If
-              /mM/JqYOv4QYA2Y5qBiZQjFxXmC87VS8pgrrZMgdNvUyv5rydk3ivxnkhkQ+Au1Z
-              fDMjc5fSa8ejZjBkMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEA
-              MB0GA1UdDgQWBBT105bZmMYSBC0RM21mEJLC6NqkGTAfBgNVHSMEGDAWgBRQPzjl
-              Om27LjRDIAzDY2boFAcJVDAKBggqhkjOPQQDAgNIADBFAiB7KTB3tOEZWUgx+wOI
-              zHYo0P4q4bUxB7PprG0Pnkt6MQIhAJXp973nzpkFYsYvH1FrlS7Z0ca6ZmJWZHMm
-              hvnCH/59
-              -----END CERTIFICATE-----
+              <issuer-cert>
           - name: identity.issuer.tls.keyPEM
             value: |-
-              -----BEGIN EC PRIVATE KEY-----
-              MHcCAQEEIEhYlvpB1oWxBbBrOTFwrGI9elJrs18XSsCkpy4g0EePoAoGCCqGSM49
-              AwEHoUQDQgAEbkPgnzvbsh/+Yz8mpg6/hBgDZjmoGJlCMXFeYLztVLymCutkyB02
-              9TK/mvJ2TeK/GeSGRD4C7Vl8MyNzl9Jrxw==
-              -----END EC PRIVATE KEY-----
+              <issuer-key>
   destination:
     server: https://kubernetes.default.svc
     namespace: linkerd
