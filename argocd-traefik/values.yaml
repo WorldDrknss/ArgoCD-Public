@@ -1,4 +1,6 @@
-replicas: 3
+deployment:
+  replicas: 3
+
 ingressRoute:
   healthcheck:
     enabled: true
