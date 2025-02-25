@@ -4,3 +4,9 @@ deployment:
 ingressRoute:
   healthcheck:
     enabled: true
+
+service:
+  enabled: true
+  type: LoadBalancer
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-name: "gitops-production-elb"
