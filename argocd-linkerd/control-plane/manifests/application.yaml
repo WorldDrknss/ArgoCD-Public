@@ -12,13 +12,12 @@ spec:
       repoURL: https://helm.linkerd.io/edge
       targetRevision: 2024.11.8
       helm:
-        parameters:
-          - name: identityTrustAnchorsPEM
-            value: "<path:kv-v2/data/linkerd#trust-anchor>"
-          - name: identity.issuer.tls.crtPEM
-            value: "<path:kv-v2/data/linkerd#issuer-cert>"
-          - name: identity.issuer.tls.keyPEM
-            value: "<path:kv-v2/data/linkerd#issuer-key>"
+        valueFiles:
+          - $values/argocd-linkerd/control-plane/values.yaml
+    - repoURL: https://github.com/WorldDrknss/ArgoCD-Public.git
+      path: "argocd-linkerd/control-plane/manifests"
+      ref: values
+      targetRevision: main
   destination:
     server: https://kubernetes.default.svc
     namespace: linkerd
