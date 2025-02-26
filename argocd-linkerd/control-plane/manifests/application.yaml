@@ -11,7 +11,7 @@ spec:
       targetRevision: 2024.11.8
       helm:
         valueFiles:
-          - $values/argocd-cert-manager/values.yaml
+          - $values/argocd-linkerd/control-plane/values.yaml
     - repoURL: https://github.com/WorldDrknss/ArgoCD-Public.git
       path: "argocd-linkerd/control-plane/manifests"
       ref: values
