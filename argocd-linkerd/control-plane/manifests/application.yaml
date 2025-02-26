@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: linkerd-control-plane
   namespace: argocd
-  annotations:
-    avp.kubernetes.io/path: kv-v2/data/linkerd  # Specifies the Vault path for AVP
 spec:
   project: default
   sources:
