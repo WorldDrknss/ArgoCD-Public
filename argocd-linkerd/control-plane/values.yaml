@@ -1,9 +1,6 @@
 identity:
   issuer:
+    externalCA: true  # Tells Linkerd to use an externally provided CA
     tls:
       generate: false
-      existingSecret: linkerd-identity-issuer
-
-global:
-  ca-bundle.crt: |
-    <path:kv-v2/data/linkerd#trust-anchor>
+      existingSecret: linkerd-identity-issuer  # Helm will now reference this instead of generating certs
