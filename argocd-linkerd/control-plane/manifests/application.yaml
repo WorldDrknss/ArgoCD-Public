@@ -8,16 +8,10 @@ spec:
   sources:
     - repoURL: https://github.com/WorldDrknss/ArgoCD-Public.git
       path: "argocd-linkerd/control-plane/manifests"
-      ref: values
       targetRevision: main
     - chart: linkerd-control-plane
       repoURL: https://helm.linkerd.io/edge
       targetRevision: 2024.11.8
-      plugin:
-        name: argocd-vault-plugin-helm  # Tell ArgoCD to use AVP Helm plugin
-        helm:
-          valueFiles:
-            - $values/argocd-linkerd/control-plane/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: linkerd
