@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: linkerd-identity-trust-roots
+  namespace: linkerd
+  annotations:
+    avp.kubernetes.io/path: kv-v2/data/linkerd
+data:
+  ca-bundle.crt: "<path:kv-v2/data/linkerd#trust-anchor>"
