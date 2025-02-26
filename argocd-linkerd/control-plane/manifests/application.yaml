@@ -13,9 +13,6 @@ spec:
     - chart: linkerd-control-plane
       repoURL: https://helm.linkerd.io/edge
       targetRevision: 2024.11.8
-      helm:
-        valueFiles:
-          - $values/argocd-linkerd/control-plane/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: linkerd
