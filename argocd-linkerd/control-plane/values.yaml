@@ -1,1 +1,5 @@
-
+identity:
+  issuer:
+    tls:
+      generate: false
+      existingSecret: linkerd-identity-issuer
