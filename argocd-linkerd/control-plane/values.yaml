@@ -1,0 +1,6 @@
+identityTrustAnchorsPEM: "<path:kv-v2/data/linkerd#trust-anchor>"
+identity:
+  issuer:
+    tls:
+      crtPEM: "<path:kv-v2/data/linkerd#issuer-cert>"
+      keyPEM: "<path:kv-v2/data/linkerd#issuer-key>"
