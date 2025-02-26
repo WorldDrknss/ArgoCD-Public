@@ -11,9 +11,9 @@ spec:
       ref: values
       targetRevision: main
     - chart: linkerd-control-plane
-      repoURL: https://helm.linkerd.io/edge
-      targetRevision: 2024.11.8
-      helm:
+        repoURL: https://helm.linkerd.io/edge
+        targetRevision: 2024.11.8
+        helm:
         valueFiles:
           - $values/argocd-linkerd/control-plane/values.yaml
   destination:
