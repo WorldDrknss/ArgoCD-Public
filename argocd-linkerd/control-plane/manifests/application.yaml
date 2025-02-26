@@ -25,16 +25,3 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-  ignoreDifferences:
-    - group: ""
-      kind: Secret
-      name: linkerd-identity-issuer
-      namespace: linkerd
-      jsonPointers:
-        - /data
-    - group: ""
-      kind: ConfigMap
-      name: linkerd-config
-      namespace: linkerd
-      jsonPointers:
-        - /data
