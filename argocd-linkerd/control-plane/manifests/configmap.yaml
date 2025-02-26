@@ -6,4 +6,4 @@ metadata:
   annotations:
     avp.kubernetes.io/path: kv-v2/data/linkerd
 data:
-  test: "<path:kv-v2/data/linkerd#trust-anchor>"
+  ca-bundle.crt: "<path:kv-v2/data/linkerd#trust-anchor>"
