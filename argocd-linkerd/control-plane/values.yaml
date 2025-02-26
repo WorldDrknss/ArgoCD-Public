@@ -1,6 +1,6 @@
 identity:
   issuer:
-    externalCA: true  # Tells Linkerd to use an externally provided CA
     tls:
-      generate: false
-      existingSecret: linkerd-identity-issuer  # Helm will now reference this instead of generating certs
+      secretName: linkerd-identity-issuer
+  trustAnchors:
+    configMapName: linkerd-identity-trust-roots
