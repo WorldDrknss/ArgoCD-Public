@@ -13,9 +13,11 @@ spec:
     - chart: linkerd-control-plane
       repoURL: https://helm.linkerd.io/edge
       targetRevision: 2024.11.8
-      helm:
-        valueFiles:
-          - $values/argocd-linkerd/control-plane/values.yaml
+      plugin:
+        name: avp_helm  # Tell ArgoCD to use AVP Helm plugin
+        helm:
+          valueFiles:
+            - $values/argocd-linkerd/control-plane/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: linkerd
