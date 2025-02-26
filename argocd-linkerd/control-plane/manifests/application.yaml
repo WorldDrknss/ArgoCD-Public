@@ -6,12 +6,12 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: https://github.com/WorldDrknss/ArgoCD-Public.git
-      path: "argocd-linkerd/control-plane/manifests"
-      targetRevision: main
     - chart: linkerd-control-plane
       repoURL: https://helm.linkerd.io/edge
       targetRevision: 2024.11.8
+    - repoURL: https://github.com/WorldDrknss/ArgoCD-Public.git
+      path: "argocd-linkerd/control-plane/manifests"
+      targetRevision: main
   destination:
     server: https://kubernetes.default.svc
     namespace: linkerd
