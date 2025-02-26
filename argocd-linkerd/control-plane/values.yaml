@@ -3,3 +3,7 @@ identity:
     tls:
       generate: false
       existingSecret: linkerd-identity-issuer
+
+global:
+  ca-bundle.crt: |
+    <path:kv-v2/data/linkerd#trust-anchor>
