@@ -6,6 +6,4 @@ metadata:
   annotations:
     avp.kubernetes.io/path: kv-v2/data/linkerd
 data:
-  global: |
-    identity:
-      trustAnchorsPEM: "<path:kv-v2/data/linkerd#trust-anchor>"
+  trustAnchorsPEM: "<path:kv-v2/data/linkerd#trust-anchor>"
