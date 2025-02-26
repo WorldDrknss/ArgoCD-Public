@@ -1,4 +1,4 @@
-apiVersion: argoproj.io/v1
+apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: linkerd-control-plane
@@ -6,11 +6,15 @@ metadata:
 spec:
   project: default
   sources:
+    - repoURL: https://github.com/WorldDrknss/ArgoCD-Public.git
+      path: "argocd-linkerd/control-plane/manifests"
+      ref: values
+      targetRevision: main
     - chart: linkerd-control-plane
       repoURL: https://helm.linkerd.io/edge
       targetRevision: 2024.11.8
       plugin:
-        name: avp-helm  # Matches the name in argocd-cm
+        name: avp-helm  # Tell ArgoCD to use AVP Helm plugin
         helm:
           valueFiles:
             - $values/argocd-linkerd/control-plane/values.yaml
