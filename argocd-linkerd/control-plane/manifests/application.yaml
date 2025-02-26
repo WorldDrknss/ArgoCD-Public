@@ -9,6 +9,9 @@ spec:
     - chart: linkerd-control-plane
       repoURL: https://helm.linkerd.io/edge
       targetRevision: 2024.11.8
+      helm:
+        valueFiles:
+          - $values/argocd-cert-manager/values.yaml
     - repoURL: https://github.com/WorldDrknss/ArgoCD-Public.git
       path: "argocd-linkerd/control-plane/manifests"
       targetRevision: main
