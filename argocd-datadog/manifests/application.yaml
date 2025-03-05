@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: datadog
+spec:
+  project: default
+  sources:
+    - repoURL: https://helm.datadoghq.com
+      targetRevision: 3.102.0
+      chart: datadog
+      helm:
+        valueFiles:
+        - $values/argocd-datadog/values.yaml
+    - repoURL: https://github.com/WorldDrknss/ArgoCD-Public.git
+      path: "argocd-datadog/manifests"
+      targetRevision: main
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: datadog
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
