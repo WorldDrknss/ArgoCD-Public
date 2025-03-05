@@ -1,0 +1,16 @@
+registry: "gcr.io/datadoghq"
+datadog:
+  apiKeyExistingSecret: "datadog-secret"
+  site: "datadoghq.com"
+  clusterName: "gitops-production"
+  logs:
+    enabled: true
+    containerCollectAll: true
+  networkMonitoring:
+    enabled: true
+clusterAgent:
+  replicas: 2
+  createPodDisruptionBudget: true
+  admissionController:
+    enabled: true
+    mutateUnlabelled: true
