@@ -7,7 +7,7 @@ spec:
   project: default
   sources:
     - repoURL: https://traefik.github.io/charts
-      targetRevision: 33.2.1
+      targetRevision: 34.4.1
       chart: traefik
       helm:
         valueFiles:
